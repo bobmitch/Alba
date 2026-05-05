@@ -7,7 +7,7 @@
 
 import React, { useEffect, useMemo, useState, useRef } from "react";
 import { createRoot } from "react-dom/client";
-import { Puck, DropZone } from "@puckeditor/puck";
+import { Puck, DropZone } from "@puckeditor/core";
 
 const h = React.createElement;
 const cfg = window.albaPuck;
