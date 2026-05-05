@@ -12,5 +12,6 @@ CREATE TABLE `pages` (
   `page_options` text NOT NULL COMMENT 'seo and og settings',
   `note` varchar(255) DEFAULT NULL,
   `domain` text NOT NULL,
+  `draft_data` longtext DEFAULT NULL COMMENT 'Puck visual editor JSON draft',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

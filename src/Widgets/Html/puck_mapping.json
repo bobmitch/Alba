@@ -1,0 +1,15 @@
+{
+  "widgetLocation": "html",
+  "puckComponentName": "HtmlWidget",
+  "label": "HTML / Content",
+  "category": "Content",
+  "fields": {
+    "markup": {
+      "type": "textarea",
+      "label": "HTML Content"
+    }
+  },
+  "defaultProps": {
+    "markup": "<p>New HTML content. Edit me.</p>"
+  }
+}

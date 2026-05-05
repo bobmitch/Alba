@@ -20,9 +20,24 @@
 	<?php if ($page->id):?>
 	Edit Page &ldquo;<?php echo Input::stringHtmlSafe($page->title);?>&rdquo;
 	<?php else:?>
-	New Page 
+	New Page
 	<?php endif; ?>
 </h1>
+
+<?php if ($page->id):?>
+<div style="margin-bottom: 1rem;">
+	<a href="<?php echo $_ENV['uripath']; ?>/admin/pages/puck/<?php echo (int) $page->id; ?>"
+	   class="button is-link is-light">
+		<span class="icon"><i class="fas fa-paint-brush"></i></span>
+		<span>Open Visual Editor (Puck)</span>
+	</a>
+	<?php if (!empty($page->draft_data)): ?>
+		<span class="tag is-warning" style="margin-left: 0.5rem;" title="An unpublished visual editor draft exists for this page">
+			Draft layout pending
+		</span>
+	<?php endif; ?>
+</div>
+<?php endif; ?>
 
 <form method="POST" onSubmit="return validate_view_options();" action="<?php echo $_ENV["uripath"] . "/admin/pages/save";?>" id="page_form">
 		<input name="id" type="hidden" value="<?php echo $page->id;?>"/>

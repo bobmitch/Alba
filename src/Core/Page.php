@@ -25,6 +25,7 @@ class Page {
 	public ?int $domain;
 	public ?string $controller = null;
 	public mixed $view_configuration_object = null;
+	public ?string $draft_data = null; // Puck visual editor JSON draft
 
 	public function __construct() {
 		$this->id = 0;
@@ -164,6 +165,7 @@ class Page {
 			$this->page_options = $result->page_options;
 			$this->page_options_form->deserializeJson($this->page_options); // json from db pulled into form object in page
 			$this->domain = $result->domain;
+			$this->draft_data = property_exists($result, 'draft_data') ? $result->draft_data : null;
 			return true;
 		}
 		else {
@@ -188,6 +190,7 @@ class Page {
 			$this->view_configuration = $result->content_view_configuration;
 			$this->page_options = $result->page_options;
 			$this->page_options_form->deserializeJson($this->page_options); // json from db pulled into form object in page
+			$this->draft_data = property_exists($result, 'draft_data') ? $result->draft_data : null;
 			return true;
 		}
 		else {
@@ -195,6 +198,21 @@ class Page {
 		}
 	}
 
+	public function save_draft_data(string $json): bool {
+		if (!$this->id) {
+			return false;
+		}
+		$this->draft_data = $json;
+		return (bool) DB::exec("UPDATE pages SET draft_data=? WHERE id=?", [$json, $this->id]);
+	}
+
+	public function clear_draft_data(): bool {
+		if (!$this->id) {
+			return false;
+		}
+		$this->draft_data = null;
+		return (bool) DB::exec("UPDATE pages SET draft_data=NULL WHERE id=?", [$this->id]);
+	}
 
 
 	public function save(): bool {
