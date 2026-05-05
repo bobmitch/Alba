@@ -76,7 +76,7 @@ Use HoltBosse\Form\Input;
     "react-dom": "https://esm.sh/react-dom@18.3.1?dev",
     "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?dev",
     "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime?dev",
-    "@puckeditor/core": "https://esm.sh/@puckeditor/core@0.21.0?deps=react@18.3.1,react-dom@18.3.1&external=react,react-dom"
+    "@puckeditor/core": "https://esm.sh/@puckeditor/core@0.21.0?bundle-deps&deps=react@18.3.1,react-dom@18.3.1&external=react,react-dom"
   }
 }
 </script>
